@@ -1,0 +1,9 @@
+[Unit]
+Description=RaspiSump Webchart Service
+
+[Service]
+Restart=on-failure
+ExecStart=python /opt/raspi-sump/bin/rsumpcharthour.py
+
+[Install]
+WantedBy=multi-user.target
