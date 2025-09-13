@@ -8,7 +8,7 @@
 # MIT License -- https://www.linuxnorth.org/raspi-sump/license.html
 
 #from hcsr04sensor import sensor
-import vl53l1x
+import VL53L1X
 from raspisump import log, alerts, heartbeat, config_values
 
 configs = config_values.configuration()
