@@ -8,7 +8,8 @@
 # MIT License -- https://www.linuxnorth.org/raspi-sump/license.html
 
 #from hcsr04sensor import sensor
-import VL53L1X
+import time
+import VL53L0X
 from raspisump import log, alerts, heartbeat, config_values
 
 configs = config_values.configuration()
@@ -31,32 +32,17 @@ def water_reading():
 #    unit = configs["unit"]
 
 #    value = sensor.Measurement(trig_pin, echo_pin, temperature, unit)
-#   Open and start the VL53L1X sensor.
-#   If you've previously used change-address.py then you
-#   should use the new i2c address here.
-#   If you're using a software i2c bus (ie: HyperPixel4) then
-#   you should `ls /dev/i2c-*` and use the relevant bus number.
-    tof = VL53L1X.VL53L1X(i2c_bus=1, i2c_address=0x29)
+#   Create a VL53L0X object
+    tof = VL53L0X.VL53L0X(i2c_bus=1,i2c_address=0x29)
+#   I2C Address can change before tof.open()
+#   tof.change_address(0x32)
     tof.open()
-
-#   Optionally set an explicit timing budget
-#   These values are measurement time in microseconds,
-#   and inter-measurement time in milliseconds.
-#   If you uncomment the line below to set a budget you
-#   should use `tof.start_ranging(0)`
-#   tof.set_timing(66000, 70)
-
-    tof.start_ranging(1)  # Start ranging
-                          # 0 = Unchanged
-                          # 1 = Short Range
-                          # 2 = Medium Range
-                          # 3 = Long Range
-
-#   Grab the range in mm, this function will block until
-#   a reading is returned.
+#   Start ranging
+    tof.start_ranging(VL53L0X.Vl53l0xAccuracyMode.BETTER)
     value = tof.get_distance()
-
+    value = value/10
     tof.stop_ranging()
+    tof.close()
     
 #    try:
 #        raw_distance = value.raw_distance(sample_wait=0.3)
