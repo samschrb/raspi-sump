@@ -2,7 +2,7 @@
 Description=RaspiSump Webchart Timer
 
 [Timer]
-OnCalendar=*-*-* *:0/02:00
+OnCalendar=*-*-* *:0/2:00
 Persistent=true
 
 [Install]
