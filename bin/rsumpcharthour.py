@@ -48,8 +48,8 @@ def graph(csv_file, filename):
     fig.add_subplot(111, facecolor="white", frameon=False)
 
     rcParams.update({"font.size": 9})
-	
-	plt.plot(
+
+    plt.plot(
         plot_df[x_column],
         plot_df[y_column],
         ls="solid",
@@ -74,10 +74,11 @@ def graph(csv_file, filename):
         plt.ylabel("centimeters", fontsize=16)
 
     plt.xlabel("Time of Day", fontsize=16)
-	plt.xticks(rotation=30)
+    plt.xticks(rotation=30)
     plt.grid(True, color="#ECE5DE", linestyle="solid")
     plt.tick_params(axis="x", bottom=False, top=False)
     plt.tick_params(axis="y", left=False, right=False)
     plt.savefig(filename, transparent=True, dpi=72)
+
 
 main()
