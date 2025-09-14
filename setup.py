@@ -41,7 +41,7 @@ add_files = [
     (homedir, ["VERSION"]),
     (homedir + "web/css/inc", ["VERSION"]),
     (systemd_configdir, ["conf/systemd/rsumpwebchart.service"]),
-    (systemd_configdir, ["conf/systemd/rsumphourchart.service"])
+    (systemd_configdir, ["conf/systemd/rsumphourchart.service"]),
     (systemd_configdir, ["conf/systemd/raspisump.service"]),
     (systemd_configdir, ["conf/systemd/rsumpwebchart.timer"]),
     (systemd_configdir, ["conf/systemd/rsumphourchart.timer"]),
